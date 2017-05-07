@@ -1,0 +1,4 @@
+services:
+#    warsztaty.example:
+#        class: WarsztatyBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

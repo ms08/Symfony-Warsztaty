@@ -1,0 +1,4 @@
+warsztaty:
+    resource: "@WarsztatyBundle/Controller/"
+    type:     annotation
+    prefix:   /
