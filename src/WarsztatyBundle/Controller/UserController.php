@@ -97,16 +97,28 @@ class UserController extends Controller
      * @Template()
      */
 
-     public function showOneAction($id)
-     {
-       $em = $this->getDoctrine()->getManager();
+    //  public function showOneAction($id)
+    //  {
+    //   // $em = $this->getDoctrine()->getManager();
+    //   $repository = $this->getDoctrine()->getRepository('WarsztatyBundle:User');
+    //   $oneId = $repository->findOneById($id);
+     //
+     //
+     //
+    //   $resp = new Response ('Chciałeś imie : '.$oneId->getName().',</br> nazwisko '.$oneId->getSurname().',</br> info '.$oneId->getInfo());
+    //   return $resp;
+    //  }
+
+     /**
+      * @Route("/showAll")
+      * @Template()
+      */
+      public function showAllAction()
+      {
+      $em = $this->getDoctrine()->getManager();
       $repository = $this->getDoctrine()->getRepository('WarsztatyBundle:User');
-      $post = $repository->findOneById($id);
+      $allId = $repository->findAll();
 
-
-
-      $resp = new Response ('Chciałeś: '.$post->getName());
-      return $resp;
-     }
-
+        return new Response ($allId);
+      }
 }
