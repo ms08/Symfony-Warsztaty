@@ -93,32 +93,36 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/showAll")
+     * @Template()
+     */
+     public function showAllAction()
+     {
+     $em = $this->getDoctrine()->getManager();
+     $repository = $this->getDoctrine()->getRepository('WarsztatyBundle:User');
+     $allId = $repository->findAll();
+
+     return ['all'=>$allId];
+
+     }
+
+
+    /**
      * @Route("/{id}")
      * @Template()
      */
 
-    //  public function showOneAction($id)
-    //  {
-    //   // $em = $this->getDoctrine()->getManager();
-    //   $repository = $this->getDoctrine()->getRepository('WarsztatyBundle:User');
-    //   $oneId = $repository->findOneById($id);
-     //
-     //
-     //
-    //   $resp = new Response ('Chciałeś imie : '.$oneId->getName().',</br> nazwisko '.$oneId->getSurname().',</br> info '.$oneId->getInfo());
-    //   return $resp;
-    //  }
-
-     /**
-      * @Route("/showAll")
-      * @Template()
-      */
-      public function showAllAction()
-      {
-      $em = $this->getDoctrine()->getManager();
+     public function showOneAction($id)
+     {
+      // $em = $this->getDoctrine()->getManager();
       $repository = $this->getDoctrine()->getRepository('WarsztatyBundle:User');
-      $allId = $repository->findAll();
+      $oneId = $repository->findOneById($id);
 
-        return new Response ($allId);
-      }
+
+
+      $resp = new Response ('Chciałeś imie : '.$oneId->getName().',</br> nazwisko '.$oneId->getSurname().',</br> info '.$oneId->getInfo());
+      return $resp;
+     }
+
+
 }
