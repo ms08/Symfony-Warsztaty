@@ -4,6 +4,7 @@ namespace WarsztatyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Address
  *
@@ -174,7 +175,7 @@ class Address
     /**
      * Get user
      *
-     * @return \WarsztatyBundle\Entity\User 
+     * @return \WarsztatyBundle\Entity\User
      */
     public function getUser()
     {

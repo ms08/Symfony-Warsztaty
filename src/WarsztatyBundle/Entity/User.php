@@ -45,11 +45,15 @@ class User
 
     /**
     * @ORM\OneToMany(targetEntity="Telefon", mappedBy="user")
+    */
+      private $numbers;
+    /**
     * @ORM\OneToMany(targetEntity="email", mappedBy="user")
+      */
+      private $emails;
+    /**
     * @ORM\OneToMany(targetEntity="Address", mappedBy="user")
     */
-    private $numbers;
-    private $emails;
     private $adresy;
 
 
@@ -213,4 +217,70 @@ class User
         return $this->groups;
     }
 
+
+    /**
+     * Add emails
+     *
+     * @param \WarsztatyBundle\Entity\Email $emails
+     * @return User
+     */
+    public function addEmail(\WarsztatyBundle\Entity\Email $emails)
+    {
+        $this->emails[] = $emails;
+
+        return $this;
+    }
+
+    /**
+     * Remove emails
+     *
+     * @param \WarsztatyBundle\Entity\Email $emails
+     */
+    public function removeEmail(\WarsztatyBundle\Entity\Email $emails)
+    {
+        $this->emails->removeElement($emails);
+    }
+
+    /**
+     * Get emails
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEmails()
+    {
+        return $this->emails;
+    }
+
+    /**
+     * Add adresy
+     *
+     * @param \WarsztatyBundle\Entity\Address $adresy
+     * @return User
+     */
+    public function addAdresy(\WarsztatyBundle\Entity\Address $adresy)
+    {
+        $this->adresy[] = $adresy;
+
+        return $this;
+    }
+
+    /**
+     * Remove adresy
+     *
+     * @param \WarsztatyBundle\Entity\Address $adresy
+     */
+    public function removeAdresy(\WarsztatyBundle\Entity\Address $adresy)
+    {
+        $this->adresy->removeElement($adresy);
+    }
+
+    /**
+     * Get adresy
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAdresy()
+    {
+        return $this->adresy;
+    }
 }

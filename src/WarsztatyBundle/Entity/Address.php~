@@ -4,6 +4,7 @@ namespace WarsztatyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Address
  *
@@ -50,7 +51,7 @@ class Address
     private $numerMieszkania;
 
     /**
-    * @ORM\ManyToOne(targetEntity="User", inversedBy="adresy")
+    * @ORM\ManyToOne(targetEntity="user", inversedBy="adresy")
     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
     */
     private $user;
@@ -156,5 +157,28 @@ class Address
     public function getNumerMieszkania()
     {
         return $this->numerMieszkania;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \WarsztatyBundle\Entity\User $user
+     * @return Address
+     */
+    public function setUser(\WarsztatyBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WarsztatyBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

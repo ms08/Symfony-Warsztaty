@@ -98,4 +98,27 @@ class email
     {
         return $this->typ;
     }
+
+    /**
+     * Set user
+     *
+     * @param \WarsztatyBundle\Entity\User $user
+     * @return email
+     */
+    public function setUser(\WarsztatyBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WarsztatyBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

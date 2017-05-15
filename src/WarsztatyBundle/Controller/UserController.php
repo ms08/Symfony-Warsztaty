@@ -7,9 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 use WarsztatyBundle\Entity\User;
+use WarsztatyBundle\Entity\Address;
 
 class UserController extends Controller
 {
@@ -27,10 +29,31 @@ class UserController extends Controller
         ->add('name')
         ->add('surname')
         ->add('info')
+
         ->add('save','submit',array('label' => $button_label))
         ->getForm();
     return $form;
-}
+    }
+
+  private function getAdresForm($adres,$actionUrl = false,$button_label = 'Dodaj adres')
+    {
+    // if($actionUrl === false)
+    // {
+    //     $actionUrl = $this->generateUrl('warsztaty_user_new');
+    // }
+    $form = $this->createFormBuilder($adres)
+        ->setAction($actionUrl)
+        ->setMethod('POST')
+        ->add('miasto')
+        ->add('ulica')
+        ->add('numer_domu')
+        ->add('numer_mieszkania')
+        ->add('user',EntityType::class,['class'=>'WarsztatyBundle\Entity\User',
+                      'choice_label'=>'name'])
+        ->add('save','submit',array('label' => $button_label))
+        ->getForm();
+    return $form;
+    }
 
     /**
      * @Route("/new")
@@ -108,7 +131,7 @@ class UserController extends Controller
 
 
     /**
-     * @Route("/{id}")
+     * @Route("/show/{id}")
      * @Template()
      */
 
@@ -123,6 +146,28 @@ class UserController extends Controller
       $resp = new Response ('Chciałeś imie : '.$oneId->getName().',</br> nazwisko '.$oneId->getSurname().',</br> info '.$oneId->getInfo());
       return $resp;
      }
+
+     /**
+      * @Route("/addAddress")
+      * @Template()
+      */
+
+      public function addAdressAction(Request $req)
+      {
+       // $em = $this->getDoctrine()->getManager();
+       $adres = new Address();
+       $form = $this->getAdresForm($adres);
+       $form->handleRequest($req);
+       if($form->isSubmitted())
+       {
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($adres);
+           $em->flush();
+
+       }
+       return ['form' => $form->createView()];
+
+      }
 
 
 }

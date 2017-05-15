@@ -67,4 +67,27 @@ class Telefon
     {
         return $this->numerTelefonu;
     }
+
+    /**
+     * Set user
+     *
+     * @param \WarsztatyBundle\Entity\User $user
+     * @return Telefon
+     */
+    public function setUser(\WarsztatyBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WarsztatyBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
