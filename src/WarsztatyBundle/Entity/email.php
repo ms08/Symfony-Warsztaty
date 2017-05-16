@@ -26,7 +26,7 @@ class Email
      * @var string
      *
      * @ORM\Column(name="adres_emial", type="string", length=255)
-     *@Assert\Email
+     * @Assert\Email
      */
     private $adresEmial;
 
