@@ -48,7 +48,7 @@ class User
     */
       private $numbers;
     /**
-    * @ORM\OneToMany(targetEntity="email", mappedBy="user")
+    * @ORM\OneToMany(targetEntity="Email", mappedBy="user")
       */
       private $emails;
     /**

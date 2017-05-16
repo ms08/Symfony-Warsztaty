@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * email
  *
- * @ORM\Table(name="email")
+ * @ORM\Table(name="Email")
  * @ORM\Entity(repositoryClass="WarsztatyBundle\Repository\emailRepository")
  */
-class email
+class Email
 {
     /**
      * @var int
@@ -115,7 +115,7 @@ class email
     /**
      * Get user
      *
-     * @return \WarsztatyBundle\Entity\User 
+     * @return \WarsztatyBundle\Entity\User
      */
     public function getUser()
     {

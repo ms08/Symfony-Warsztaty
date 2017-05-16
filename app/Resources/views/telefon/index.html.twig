@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Telefons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numertelefonu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for telefon in telefons %}
+            <tr>
+                <td><a href="{{ path('telefon_show', { 'id': telefon.id }) }}">{{ telefon.id }}</a></td>
+                <td>{{ telefon.numerTelefonu }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('telefon_show', { 'id': telefon.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('telefon_edit', { 'id': telefon.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('telefon_new') }}">Create a new telefon</a>
+        </li>
+    </ul>
+{% endblock %}
