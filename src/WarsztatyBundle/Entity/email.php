@@ -3,6 +3,7 @@
 namespace WarsztatyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * email
@@ -25,6 +26,7 @@ class Email
      * @var string
      *
      * @ORM\Column(name="adres_emial", type="string", length=255)
+     *@Assert\Email
      */
     private $adresEmial;
 
