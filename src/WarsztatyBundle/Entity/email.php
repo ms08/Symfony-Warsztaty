@@ -43,8 +43,6 @@ class Email
     */
     private $user;
 
-
-
     /**
      * Get id
      *
